@@ -43,7 +43,7 @@ function ResponsiveAppBar() {
             <Box
             component="img"
             sx={{
-              height: 80,
+              height: 50,
               display: { xs: 'none', md: 'flex' },
               mr: 1,
             }}
