@@ -20,14 +20,14 @@ export default function Home() {
         <title>BrainCards</title>
         <meta name="description" content="Create flashcard from your text"></meta>
       </Head>
-      <div id='header' style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Box sx={{textAlign: 'center'}}>
+      <div id='header' style={{ height: '100vh', display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#2D5652' }}>
+        <Box sx={{textAlign: 'center', backgroundColor: 'white', height: '70vh', paddingTop: '50px', borderRadius: '20px', padding: '70px 20px'}}>
           <div className="welcome-bg">
             <Typography className="welcome-title" variant="h3" component="h1" gutterBottom>
-              Master you learning with lightning-fast flashcard
+              Grow with Confidence
             </Typography>
             <Typography variant="h5" component="h2" gutterBottom>
-              The easiest way to create flashcards from your text.
+              Your Smart Garden Guide for Healthier, Happier Plants.
             </Typography>
           </div>
           <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/generate">
@@ -37,8 +37,15 @@ export default function Home() {
             Learn More
           </Button>
         </Box>
+        <div>
+          <img 
+              src="\plant.png" 
+              width="500px" 
+              style={{ padding: '0 50px 50px 0' }} 
+            />
+        </div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', margin:'250px' }}>
         <Container style={{ display: 'flex' }}>
           <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
             <img 
@@ -49,7 +56,7 @@ export default function Home() {
           </div>
           <div>
             <Typography sx={{ fontWeight: 600 }} variant="h4" component="h2" gutterBottom>
-              Talk to your personal assistant
+              Talk with your personal assistant
             </Typography>
             <Typography sx={{ fontSize: '18px', color: '#616060', marginBottom: '65px' }}>
               Unlock powerful features designed to boost your learning! From customizable flashcards 
