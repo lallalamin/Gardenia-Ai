@@ -1,143 +1,35 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-//const pages = ['Products', 'Pricing', 'Blog'];
-const pages = [];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-  return (
-    <AppBar position="static" sx={{ backgroundColor: '#2D5652'}}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-            <Box
-            component="img"
-            sx={{
-              height: 50,
-              display: { xs: 'none', md: 'flex' },
-              mr: 1,
-            }}
-            alt="Logo"
-            src="/logo.png" 
-            />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'sans-serif',
-              fontWeight: 700,
-              color: 'white',
-              textDecoration: 'none',
-            }}
-          >
-            GardeniaAI
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+export default function CustomAppBar() {
+    return (
+        <AppBar position="static" className="nav-bar" sx={{ backgroundColor:'#2D5652'}}>
+            <Toolbar className="tool-bar">
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <img src="\logo.png" width="50px"></img>
+                    <Typography className="logo-title" component="a" href="/" variant="h6" sx={{  textDecoration: 'none', color: 'white', paddingLeft: '10px'}}>
+                        GardeniaAI
+                    </Typography>
+                </div>
+                <div>
+                    <Button color="inherit" href="#Pricing" className="nav-item" sx={{ color:'white'}}>Pricing</Button>
+                    <Button color="inherit" href="#About" className="nav-item" sx={{ color:'white'}}>About</Button>
+                    <Button color="inherit" href="/resources" className="nav-item" sx={{ color:'white'}}>Community</Button>
+                    <Button color="inherit" href="/contact" className="nav-item" sx={{ color:'white'}}>Contact</Button>    
+                </div>
+                <div>
+                    <SignedOut>
+                        <Button color="inherit" href="/sign-up" className="button-white" sx={{ mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }}>Sign Up</Button>
+                        <Button color="inherit" href="/sign-in" className="button-blue" sx={{ mr: 2, backgroundColor: '#2E46CD', color: 'white', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#1565C0',}, }}>Login</Button>
+                    </SignedOut>
+                    <SignedIn>
+                    <Button color="inherit" href="/generate"  sx={{ mr: 2, border:'1px solid black', backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }}>Generate</Button>
+                        <Button color="inherit" href="/flashcards" sx={{ mr: 2, backgroundColor: '#2E46CD', color: 'white', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#1565C0',}, }}>My Cards</Button>
+                        <UserButton />
+                    </SignedIn>
+                </div>
+                
+            </Toolbar>
+        </AppBar>
+    );
 }
-export default ResponsiveAppBar;

@@ -1,139 +1,212 @@
 "use client"
 import Image from "next/image";
-import styles from "./page.module.css";
+import { AppBar, Container, Toolbar, Typography, Button, Box, Grid, Card, CardActions, CardContent, Divider } from "@mui/material"
+//import getStripe from "@/utils/get-stripe";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Head from "next/head";
 import NavBar from "@/components/NavBar"
-import { Box, Typography, Stack, Button, TextField, Grid, List, ListItem, ListItemText, IconButton } from "@mui/material";
-import { Delete as DeleteIcon } from '@mui/icons-material';
-import { firestore } from "/firebase";
-import { collection, deleteDoc, doc, getDocs, query, setDoc, getDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import Footer from "@/components/Footer"
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import PlaceIcon from '@mui/icons-material/Place';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-  gap: 3,
-  flexDirection: 'column',
-};
 
 export default function Home() {
-  const [inventory, setinventory] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [itemName, setItemName] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const addItem = async (item) => {
-    const docRef = doc(collection(firestore, 'inventory'), item);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const { quantity } = docSnap.data();
-      await setDoc(docRef, { quantity: quantity + 1});
-    } else {
-      await setDoc(docRef, { quantity: 1});
-    }
-    await updateInventory();
-  };
-
-  const removeItem = async (item) => {
-    const docRef = doc(collection(firestore, 'inventory'), item);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const { quantity } = docSnap.data();
-      if (quantity === 1) {
-        await deleteDoc(docRef);
-      } else {
-        await setDoc(docRef, { quantity: quantity - 1 });
-      }
-    }
-    await updateInventory();
-  };
-
-  const updateInventory = async () => {
-    const snapshot = query(collection(firestore, "inventory"));
-    const docs = await getDocs(snapshot);
-    const pantryList = [];
-    docs.forEach((doc) => {
-      pantryList.push({ name: doc.id, quantity: doc.data().quantity});
-    });
-    setinventory(pantryList);
-  };
-
-  const filteredPantry = inventory.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  useEffect(() => {
-    updateInventory();
-  }, []);
-
   return (
-    <div>
-      <NavBar></NavBar>
-      <Box>
-        <Box width="100vw" height="100vh" display="flex" justifyContent="center" alignItems="center" gap={2} flexDirection="column">
-          <Typography variant="h5"  textAlign="center" fontWeight="bold">
-            Enter your plant baby
-          </Typography>
-          <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
-            <TextField
-              id="outline-basic"
-              label="Add plant"
-              variant="outlined"
-              fullWidth
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
+  <main> 
+    <NavBar/>
+      <Head>
+        <title>BrainCards</title>
+        <meta name="description" content="Create flashcard from your text"></meta>
+      </Head>
+      <div id='header' style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{textAlign: 'center'}}>
+          <div className="welcome-bg">
+            <Typography className="welcome-title" variant="h3" component="h1" gutterBottom>
+              Master you learning with lightning-fast flashcard
+            </Typography>
+            <Typography variant="h5" component="h2" gutterBottom>
+              The easiest way to create flashcards from your text.
+            </Typography>
+          </div>
+          <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/generate">
+            Get Started
+          </Button>
+          <Button className="button-blue" variant="outlined" color="primary" sx={{ mt: 2, backgroundColor: '#2E46CD', color: 'white', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#1565C0',}, }}>
+            Learn More
+          </Button>
+        </Box>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <Container style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+            <img 
+              src="\chat.png" 
+              width="600px" 
+              style={{ padding: '0 50px 50px 0' }} 
             />
-            
-            <Button variant="contained" onClick={() => { addItem(itemName); setItemName(''); handleClose(); }} sx={{ backgroundColor: '#96D3CC' }}>
-              Add
+          </div>
+          <div>
+            <Typography sx={{ fontWeight: 600 }} variant="h4" component="h2" gutterBottom>
+              Talk to your personal assistant
+            </Typography>
+            <Typography sx={{ fontSize: '18px', color: '#616060', marginBottom: '65px' }}>
+              Unlock powerful features designed to boost your learning! From customizable flashcards 
+              and spaced repetition to rich media integration and progress tracking, our tools are 
+              built to help you study smarter and achieve more.
+            </Typography>
+          </div>
+        </Container>
+      </div>
+
+      <Container className="feature-box" id="About">
+        <Box sx={{my: 6}}>
+          <Typography  sx={{ fontWeight: 600 }} variant="h4" component="h2" gutterBottom>Features</Typography>
+          <Typography sx={{ fontSize: '18px', color: '#616060', marginBottom: '65px'}}>
+                {' '}
+                Unlock powerful features designed to boost your learning! From customizable flashcards 
+                and spaced repetition to rich media integration and progress tracking, our tools are 
+                built to help you study smarter and achieve more.
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={4}>
+              <AutoFixHighIcon></AutoFixHighIcon>
+              <Typography variant="h6" sx={{ fontWeight: 750 }}>Easy Text Input</Typography>
+              <Typography variant="h6" sx={{ fontSize: '18px', color: '#616060'  }}>
+                {' '}
+                Simply input your text and let our software do the rest. 
+                Creating flashcards has never be easier
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <PsychologyIcon></PsychologyIcon>
+              <Typography variant="h6" sx={{ fontWeight: 750 }}>Smart Flashcards</Typography>
+              <Typography variant="h6" sx={{ fontSize: '18px', color: '#616060'  }}>
+                {' '}
+                Our AI intelligently break down your text into concise
+                flashcards, great for studying
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <PlaceIcon></PlaceIcon>
+              <Typography variant="h6" sx={{ fontWeight: 750 }}>Accessible Anywhere</Typography>
+              <Typography variant="h6" sx={{ fontSize: '18px', color: '#616060'  }}>
+                {' '}
+                Access your flashcards from any device, at any time.
+                Study on the go with ease.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
+      
+      <Box sx={{ my: 6, textAlign: 'center'}}>
+      <Typography variant="h4" component="h2" sx={{ fontWeight: 600 }} id="Pricing" gutterBottom>
+        Pricing
+      </Typography>
+      <Typography variant="h6" component="h2" sx={{ marginBottom: '30px' }}>
+        Choose the plan that fits your study needs!
+      </Typography>
+      <Grid container spacing={4} justifyContent="center" sx={{maxWidth: '800px', margin: '0 auto'}}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Box
+            sx={{
+              width: '100%',
+              height: 350,
+              p: 3,
+              border: '1px solid',
+              borderColor: 'grey.300',
+              borderRadius: 2,
+              textAlign: 'left',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>
+              <Typography variant="h6" gutterBottom>
+                Basic
+              </Typography>
+              <Typography variant="h4" component="div" sx={{ fontWeight: 'bold' }}>
+                Free
+              </Typography>
+              <Typography variant="body2" component="div" sx={{ color: 'grey.600' }}>
+                / month
+              </Typography>
+              <Divider sx={{ my: 2 }} />
+              <Typography variant="body1" sx={{ mb: 1 }}>
+                • Access basic flashcard features
+              </Typography>
+              <Typography variant="body1">• Limited storage</Typography>
+            </div>
+            <Button
+              variant="contained"
+              sx={{
+                mt: 2,
+                backgroundColor: '#FFCDD2',
+                color: '#000',
+                '&:hover': {
+                  backgroundColor: '#FFABAB',
+                },
+              }}
+            >
+              GET START
             </Button>
           </Box>
-          <Box >
-            <Box width="800px" height="80px" bgcolor="#96D3CC" display="flex" justifyContent="center" alignItems="center" sx={{borderRadius: "20px"}}>
-              <Typography variant="h6" color="#ffffff" textAlign="center" fontWeight="bold">
-                Your Plant Inventory
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Box
+            sx={{
+              width: '100%',
+              height: 350,
+              p: 3,
+              border: '1px solid',
+              borderColor: 'grey.300',
+              borderRadius: 2,
+              textAlign: 'left',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>
+              <Typography variant="h6" gutterBottom>
+                Pro
               </Typography>
-            </Box>
-            <Box display="flex" justifyContent="flex-end" mt={2} mb={1}>
-              <TextField
-                label="Search for plant"
-                variant="outlined"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                sx={{ marginRight: 2 }} // Adjust margin as needed
-              />
-            </Box>
-            <Stack width="800px" height="300px" spacing={2} overflow="auto">
-              <Grid item xs={12} md={6}>
-                <List dense>
-                  {filteredPantry.map(({ name, quantity }) => (
-                    <ListItem key={name} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: "center", background: "#E5F2E9", marginBottom: "5px", borderRadius: "10px"}}>
-                      <ListItemText
-                        primary={<Typography variant="body1" sx={{ color: '#333' }}>{name.charAt(0).toUpperCase() + name.slice(1)}</Typography>}
-                        secondary={`Quantity: ${quantity}`}
-                      />
-                      <IconButton edge="end" aria-label="delete" onClick={() => removeItem(name)}>
-                        <DeleteIcon />
-                      </IconButton>
-                    </ListItem>
-                  ))}
-                </List>
-              </Grid>
-            </Stack>
+              <Typography variant="h4" component="div" sx={{ fontWeight: 'bold' }}>
+                $5
+              </Typography>
+              <Typography variant="body2" component="div" sx={{ color: 'grey.600' }}>
+                / month
+              </Typography>
+              <Divider sx={{ my: 2 }} />
+              <Typography variant="body1" sx={{ mb: 1 }}>
+                • Unlimited storage
+              </Typography>
+              <Typography variant="body1">• Unlimited flashcard</Typography>
+              <Typography variant="body1">• Priority support</Typography>
+            </div>
+            <Button
+              variant="contained"
+              sx={{
+                mt: 2,
+                fontSize: '12px',
+                backgroundColor: '#1E88E5',
+                color: '#FFF',
+                '&:hover': {
+                  backgroundColor: '#1565C0',
+                },
+              }}
+            >
+              <StarBorderIcon></StarBorderIcon>
+              UPGRADE TO PRO
+            </Button>
           </Box>
-        </Box>
-      </Box>
-    </div>
-  );
+        </Grid>
+      </Grid>
+    </Box>
+    <Footer/>
+    </main>
+    );
 }
