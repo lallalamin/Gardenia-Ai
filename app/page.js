@@ -4,8 +4,8 @@ import { AppBar, Container, Toolbar, Typography, Button, Box, Grid, Card, CardAc
 //import getStripe from "@/utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Head from "next/head";
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
+import NavBar from "../components/NavBar"
+import Footer from "../components/Footer"
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import PlaceIcon from '@mui/icons-material/Place';
@@ -15,7 +15,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 export default function Home() {
   return (
   <main> 
-    <NavBar/>
+    <NavBar></NavBar>
       <Head>
         <title>BrainCards</title>
         <meta name="description" content="Create flashcard from your text"></meta>
@@ -30,7 +30,7 @@ export default function Home() {
               Your Smart Garden Guide for Healthier, Happier Plants.
             </Typography>
           </div>
-          <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/generate">
+          <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/inventory">
             Get Started
           </Button>
           <Button className="button-blue" variant="outlined" color="primary" sx={{ mt: 2, backgroundColor: '#2E46CD', color: 'white', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#1565C0',}, }}>
@@ -143,7 +143,7 @@ export default function Home() {
               </Typography>
               <Divider sx={{ my: 2 }} />
               <Typography variant="body1" sx={{ mb: 1 }}>
-                • Access basic flashcard features
+                • Access basic inventory and plant advising features
               </Typography>
               <Typography variant="body1">• Limited storage</Typography>
             </div>
@@ -191,7 +191,7 @@ export default function Home() {
               <Typography variant="body1" sx={{ mb: 1 }}>
                 • Unlimited storage
               </Typography>
-              <Typography variant="body1">• Unlimited flashcard</Typography>
+              <Typography variant="body1">• Detailed state-of-the-art plant growth guidance, tips, and advising</Typography>
               <Typography variant="body1">• Priority support</Typography>
             </div>
             <Button
