@@ -17,14 +17,19 @@ export default function Home() {
   <main> 
     <NavBar></NavBar>
       <Head>
-        <title>BrainCards</title>
+        <title>Gardenia AI</title>
         <meta name="description" content="Create flashcard from your text"></meta>
       </Head>
       <div id='header' style={{ height: '100vh', display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#2D5652' }}>
         <Box sx={{textAlign: 'center', backgroundColor: 'white', height: '70vh', paddingTop: '50px', borderRadius: '20px', padding: '70px 20px'}}>
           <div className="welcome-bg">
             <Typography className="welcome-title" variant="h3" component="h1" gutterBottom>
-              Grow with Confidence
+              Grow with <Typography className="welcome-title" variant="h3" component="span" sx={{
+    background: 'linear-gradient(90deg, #97D3CD, #4CAF50)', // Light green gradient
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  }}>Confidence
+            </Typography>
             </Typography>
             <Typography variant="h5" component="h2" gutterBottom>
               Your Smart Garden Guide for Healthier, Happier Plants.

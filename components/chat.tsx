@@ -5,6 +5,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { useChat } from 'ai/react';
+import React, { useState, useRef } from "react";
 
 import {
   Box,
@@ -15,14 +16,17 @@ import {
   TextField,
 } from "@mui/material";
 
+import NavBar from "../components/NavBar"
 
 export default function Page() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     keepLastMessageOnError: true,
   });
 
+
   return (
-    
+    <div>
+    <NavBar></NavBar>
     <Box
     sx={{
       backgroundImage: 'url("green-leaves-back.png")',
@@ -66,7 +70,7 @@ export default function Page() {
         </Button>
       </form>
       </Box>
-
+      </div>
     
   );
 }
