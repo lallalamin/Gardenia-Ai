@@ -17,7 +17,7 @@ export default function Home() {
   <main> 
     <NavBar/>
       <Head>
-        <title>BrainCards</title>
+        <title>GardeniaAi</title>
         <meta name="description" content="Create flashcard from your text"></meta>
       </Head>
       <div id='header' style={{ height: '100vh', display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#2D5652' }}>
@@ -30,10 +30,10 @@ export default function Home() {
               Your Smart Garden Guide for Healthier, Happier Plants.
             </Typography>
           </div>
-          <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/generate">
+          <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/generate" >
             Get Started
           </Button>
-          <Button className="button-blue" variant="outlined" color="primary" sx={{ mt: 2, backgroundColor: '#2E46CD', color: 'white', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#1565C0',}, }}>
+          <Button className="button-blue" variant="outlined" color="primary" sx={{ mt: 2, backgroundColor: '#2D5652', color: 'white', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#1565C0',}, }}>
             Learn More
           </Button>
         </Box>
@@ -59,9 +59,9 @@ export default function Home() {
               Talk with your personal assistant
             </Typography>
             <Typography sx={{ fontSize: '18px', color: '#616060', marginBottom: '65px' }}>
-              Unlock powerful features designed to boost your learning! From customizable flashcards 
-              and spaced repetition to rich media integration and progress tracking, our tools are 
-              built to help you study smarter and achieve more.
+            Unlock powerful capabilities to manage your garden hands-free! With voice 
+            recognition, interact with your assistant to identify plants, diagnose issues, 
+            and receive tailored care advice effortlessly.
             </Typography>
           </div>
         </Container>
@@ -72,36 +72,36 @@ export default function Home() {
           <Typography  sx={{ fontWeight: 600 }} variant="h4" component="h2" gutterBottom>Features</Typography>
           <Typography sx={{ fontSize: '18px', color: '#616060', marginBottom: '65px'}}>
                 {' '}
-                Unlock powerful features designed to boost your learning! From customizable flashcards 
-                and spaced repetition to rich media integration and progress tracking, our tools are 
-                built to help you study smarter and achieve more.
+                Unlock powerful tools designed to simplify your gardening! From plant identification and issue 
+                diagnosis to tracking care routines, our assistant helps both beginners and experts manage their 
+                gardens with ease.
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
               <AutoFixHighIcon></AutoFixHighIcon>
-              <Typography variant="h6" sx={{ fontWeight: 750 }}>Easy Text Input</Typography>
+              <Typography variant="h6" sx={{ fontWeight: 750 }}>Real-Time Plant Identification</Typography>
               <Typography variant="h6" sx={{ fontSize: '18px', color: '#616060'  }}>
                 {' '}
-                Simply input your text and let our software do the rest. 
-                Creating flashcards has never be easier
+                Simply describe the plant or take a photo, and your assistant will 
+                provide instant identification and recommendations.
               </Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <PsychologyIcon></PsychologyIcon>
-              <Typography variant="h6" sx={{ fontWeight: 750 }}>Smart Flashcards</Typography>
+              <Typography variant="h6" sx={{ fontWeight: 750 }}>Hands-Free Problem Solving</Typography>
               <Typography variant="h6" sx={{ fontSize: '18px', color: '#616060'  }}>
                 {' '}
-                Our AI intelligently break down your text into concise
-                flashcards, great for studying
+                Voice-activated diagnostics make it easy to check for pests, diseases, 
+                or watering issues without lifting a finger.
               </Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <PlaceIcon></PlaceIcon>
-              <Typography variant="h6" sx={{ fontWeight: 750 }}>Accessible Anywhere</Typography>
+              <Typography variant="h6" sx={{ fontWeight: 750 }}>Personalized Care Updates</Typography>
               <Typography variant="h6" sx={{ fontSize: '18px', color: '#616060'  }}>
                 {' '}
-                Access your flashcards from any device, at any time.
-                Study on the go with ease.
+                Ask your assistant about your plant care schedule, and receive real-time 
+                updates on watering, fertilizing, or pruning tasks.
               </Typography>
             </Grid>
           </Grid>
@@ -113,14 +113,14 @@ export default function Home() {
         Pricing
       </Typography>
       <Typography variant="h6" component="h2" sx={{ marginBottom: '30px' }}>
-        Choose the plan that fits your study needs!
+        Choose the plan that fits your garden needs!
       </Typography>
       <Grid container spacing={4} justifyContent="center" sx={{maxWidth: '800px', margin: '0 auto'}}>
         <Grid item xs={12} sm={6} md={4}>
           <Box
             sx={{
               width: '100%',
-              height: 350,
+              height: 400,
               p: 3,
               border: '1px solid',
               borderColor: 'grey.300',
@@ -143,15 +143,15 @@ export default function Home() {
               </Typography>
               <Divider sx={{ my: 2 }} />
               <Typography variant="body1" sx={{ mb: 1 }}>
-                • Access basic flashcard features
+                • Plant identification and care suggestions
               </Typography>
-              <Typography variant="body1">• Limited storage</Typography>
+              <Typography variant="body1">• 10 Plants in inventory</Typography>
             </div>
             <Button
               variant="contained"
               sx={{
                 mt: 2,
-                backgroundColor: '#FFCDD2',
+                backgroundColor: '#96D3CC',
                 color: '#000',
                 '&:hover': {
                   backgroundColor: '#FFABAB',
@@ -166,7 +166,7 @@ export default function Home() {
           <Box
             sx={{
               width: '100%',
-              height: 350,
+              height: 400,
               p: 3,
               border: '1px solid',
               borderColor: 'grey.300',
@@ -191,7 +191,8 @@ export default function Home() {
               <Typography variant="body1" sx={{ mb: 1 }}>
                 • Unlimited storage
               </Typography>
-              <Typography variant="body1">• Unlimited flashcard</Typography>
+              <Typography variant="body1">• Manage unlimited plants</Typography>
+              <Typography variant="body1">• Advanced diagnostics for plant issues</Typography>
               <Typography variant="body1">• Priority support</Typography>
             </div>
             <Button
@@ -199,7 +200,7 @@ export default function Home() {
               sx={{
                 mt: 2,
                 fontSize: '12px',
-                backgroundColor: '#1E88E5',
+                backgroundColor: '#2D5652',
                 color: '#FFF',
                 '&:hover': {
                   backgroundColor: '#1565C0',

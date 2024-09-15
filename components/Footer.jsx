@@ -7,12 +7,12 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export default function Footer() {
     return (
-        <AppBar position="static" className="nav-bar" sx={{ backgroundColor:'white'}}>
+        <AppBar position="static" className="nav-bar" sx={{ backgroundColor:'#2D5652'}}>
             <Toolbar className="tool-bar">
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <img src="\logo.png" width="50px"></img>
                     <Typography className="logo-title" component="a" href="/" variant="h6" sx={{  textDecoration: 'none', color: 'white', paddingLeft: '10px'}}>
-                        BrainCards
+                        GardeniaAI
                     </Typography>
                 </div>
                 <div className="footer-right">
