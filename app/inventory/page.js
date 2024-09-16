@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import NavBar from "@/components/NavBar"
+import NavBar from "/components/NavBar"
 import { Box, Typography, Stack, Button, TextField, Grid, List, ListItem, ListItemText, IconButton } from "@mui/material";
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import { firestore } from "/firebase";

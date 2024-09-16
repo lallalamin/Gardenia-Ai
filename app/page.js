@@ -4,8 +4,8 @@ import { AppBar, Container, Toolbar, Typography, Button, Box, Grid, Card, CardAc
 //import getStripe from "@/utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Head from "next/head";
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
+import NavBar from "../components/NavBar"
+import Footer from "../components/Footer"
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import PlaceIcon from '@mui/icons-material/Place';
@@ -15,7 +15,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 export default function Home() {
   return (
   <main> 
-    <NavBar/>
+    <NavBar></NavBar>
       <Head>
         <title>GardeniaAi</title>
         <meta name="description" content="Create flashcard from your text"></meta>
@@ -24,13 +24,19 @@ export default function Home() {
         <Box sx={{textAlign: 'center', backgroundColor: 'white', height: '70vh', paddingTop: '50px', borderRadius: '20px', padding: '70px 20px'}}>
           <div className="welcome-bg">
             <Typography className="welcome-title" variant="h3" component="h1" gutterBottom>
-              Grow with Confidence
+              Grow with <Typography className="welcome-title" variant="h3" component="span" sx={{
+    background: 'linear-gradient(90deg, #97D3CD, #4CAF50)', // Light green gradient
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  }}>Confidence
+            </Typography>
             </Typography>
             <Typography variant="h5" component="h2" gutterBottom>
               Your Smart Garden Guide for Healthier, Happier Plants.
             </Typography>
           </div>
-          <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/generate" >
+
+          <Button className="button-white" variant="contained" color="primary" sx={{ mt: 2, mr: 2, backgroundColor: 'white', color: 'black', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#e2e2e2',}, }} href="/inventory">
             Get Started
           </Button>
           <Button className="button-blue" variant="outlined" color="primary" sx={{ mt: 2, backgroundColor: '#2D5652', color: 'white', fontWeight: 600, borderRadius: '10px', padding: '5px 15px 5px 15px', marginLeft: '10px','&:hover': {backgroundColor: '#1565C0',}, }}>
@@ -143,6 +149,7 @@ export default function Home() {
               </Typography>
               <Divider sx={{ my: 2 }} />
               <Typography variant="body1" sx={{ mb: 1 }}>
+                • Access basic inventory and plant advising features
                 • Plant identification and care suggestions
               </Typography>
               <Typography variant="body1">• 10 Plants in inventory</Typography>
@@ -191,6 +198,8 @@ export default function Home() {
               <Typography variant="body1" sx={{ mb: 1 }}>
                 • Unlimited storage
               </Typography>
+
+              <Typography variant="body1">• Detailed state-of-the-art plant growth guidance, tips, and advising</Typography>
               <Typography variant="body1">• Manage unlimited plants</Typography>
               <Typography variant="body1">• Advanced diagnostics for plant issues</Typography>
               <Typography variant="body1">• Priority support</Typography>
