@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import {Camera} from "react-camera-pro";
 
-const Component = () => {
+export default function Camera(){
   const camera = useRef(null);
   const [image, setImage] = useState(null);
 
@@ -14,4 +14,3 @@ const Component = () => {
   );
 }
 
-export Component;

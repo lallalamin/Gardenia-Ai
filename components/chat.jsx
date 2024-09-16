@@ -18,7 +18,7 @@ import {
 
 import NavBar from '@/components/NavBar'
 
-export default function Page() {
+export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     keepLastMessageOnError: true,
   });
