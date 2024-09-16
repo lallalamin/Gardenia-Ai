@@ -16,8 +16,6 @@ import {
   TextField,
 } from "@mui/material";
 
-import NavBar from '@/components/NavBar'
-
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     keepLastMessageOnError: true,
@@ -26,7 +24,6 @@ export default function Chat() {
 
   return (
     <div>
-    <NavBar></NavBar>
     <Box
     sx={{
       backgroundImage: 'url("green-leaves-back.png")',
