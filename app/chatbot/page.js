@@ -2,6 +2,6 @@ import Chat from "@/components/chat";
 
 export const runtime = 'edge';
 
-export default function Chat() {
-  return <Page/>;
+export default function ChatBot() {
+  return <Chat/>;
 }
