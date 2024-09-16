@@ -122,11 +122,11 @@ export default function Home() {
         Choose the plan that fits your garden needs!
       </Typography>
       <Grid container spacing={4} justifyContent="center" sx={{maxWidth: '800px', margin: '0 auto'}}>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={6}>
           <Box
             sx={{
               width: '100%',
-              height: 400,
+              height: 450,
               p: 3,
               border: '1px solid',
               borderColor: 'grey.300',
@@ -150,9 +150,9 @@ export default function Home() {
               <Divider sx={{ my: 2 }} />
               <Typography variant="body1" sx={{ mb: 1 }}>
                 • Access basic inventory and plant advising features
-                • Plant identification and care suggestions
               </Typography>
-              <Typography variant="body1">• 10 Plants in inventory</Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>• Plant identification and care suggestions</Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>• 10 Plants in inventory</Typography>
             </div>
             <Button
               variant="contained"
@@ -169,11 +169,11 @@ export default function Home() {
             </Button>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={6}>
           <Box
             sx={{
               width: '100%',
-              height: 400,
+              height: 450,
               p: 3,
               border: '1px solid',
               borderColor: 'grey.300',
@@ -199,10 +199,10 @@ export default function Home() {
                 • Unlimited storage
               </Typography>
 
-              <Typography variant="body1">• Detailed state-of-the-art plant growth guidance, tips, and advising</Typography>
-              <Typography variant="body1">• Manage unlimited plants</Typography>
-              <Typography variant="body1">• Advanced diagnostics for plant issues</Typography>
-              <Typography variant="body1">• Priority support</Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>• Detailed state-of-the-art plant growth guidance, tips, and advising</Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>• Manage unlimited plants</Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>• Advanced diagnostics for plant issues</Typography>
+              <Typography variant="body1" sx={{ mb: 1 }}>• Priority support</Typography>
             </div>
             <Button
               variant="contained"
