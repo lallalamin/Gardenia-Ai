@@ -1,7 +1,7 @@
 "use client"
 
 import Chat from "/components/Chat";
-import NavBar from "/components/NavBar"
+import NavBar from "/components/NavBar";
 
 export const runtime = 'edge';
 
