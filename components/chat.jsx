@@ -16,7 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import NavBar from "../components/NavBar"
+import NavBar from '@/components/NavBar'
 
 export default function Page() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({

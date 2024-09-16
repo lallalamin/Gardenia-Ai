@@ -8,13 +8,13 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDEZmyYDzRgMqO28TAgHO8m6h_dWMPXCQU",
-  authDomain: "gardenia-ai-263c8.firebaseapp.com",
-  projectId: "gardenia-ai-263c8",
-  storageBucket: "gardenia-ai-263c8.appspot.com",
-  messagingSenderId: "32768576784",
-  appId: "1:32768576784:web:720e50cab932d182766995",
-  measurementId: "G-11025WFBVH"
+  apiKey: process.env.FIREBASE_APIKEY,
+  authDomain: "gardenia-ai.firebaseapp.com",
+  projectId: "gardenia-ai",
+  storageBucket: "gardenia-ai.appspot.com",
+  messagingSenderId: "133810334693",
+  appId: "1:133810334693:web:b4aeb83b430fd393f0dd0c",
+  measurementId: "G-E2BRBVDK7B"
 };
 
 // Initialize Firebase
